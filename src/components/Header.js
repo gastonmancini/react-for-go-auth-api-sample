@@ -7,7 +7,7 @@ function Header() {
 
     useEffect(() => {
         (async () => {
-            const { data } = await axios.get('http://localhost:8000/api/me', { withCredentials: true });
+            const { data } = await axios.get('me');
             setUser(data);
         })();
     }, []);

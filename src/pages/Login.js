@@ -11,10 +11,10 @@ function Login() {
 
     async function Submit(event) {
         event.preventDefault();
-        await axios.post('http://localhost:8000/api/login', {
+        await axios.post('login', {
             email: email,
             password: password
-        }, { withCredentials: true });
+        });
         setRedirect(true);
     }
 
