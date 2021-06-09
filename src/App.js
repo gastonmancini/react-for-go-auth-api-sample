@@ -2,7 +2,8 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
-import Users from './pages/Users'
+import Users from './pages/Users';
+import Register from './pages/Register';
 
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <BrowserRouter>
         <Route path={'/'} exact component={Dashboard} />
         <Route path={'/users'} component={Users} />
+        <Route path={'/register'} component={Register} />
       </BrowserRouter>
   );
 }
