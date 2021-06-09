@@ -1,5 +1,7 @@
 import '../Register.css';
-import React, { useState} from 'react';
+import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
+import axios from 'axios';
 
 function Register() {
 
@@ -8,16 +10,25 @@ function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("");
+    const [redirect, setRedirect] = useState(false);
 
-    function Submit(event) {
+    async function Submit(event) {
         event.preventDefault();
-        console.log({
-            firstName,
-            lastName,
-            email,
-            password,
-            passwordConfirm
-        })
+
+        await axios.post('http://localhost:8000/api/register', {
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: password,
+            passwordConfirm: passwordConfirm,
+            roleId: 1 // TODO: Allow the user to select the role.
+        });
+
+        setRedirect(true);
+    }
+
+    if (redirect) {
+        return <Redirect to={'/'} />
     }
 
     return (
