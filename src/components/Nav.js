@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Nav() {
     return (
@@ -6,16 +7,14 @@ function Nav() {
             <div className="position-sticky pt-3">
                 <ul className="nav flex-column">
                     <li className="nav-item">
-                        <a className="nav-link active" aria-current="page" href="#">
-                            <span data-feather="home"></span>
-                    Dashboard
-                    </a>
+                        <Link to={'/'} className="nav-link">
+                            Dashboard
+                        </Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">
-                            <span data-feather="users"></span>
-                    Users
-                    </a>
+                        <Link to={'/users'} className="nav-link">
+                            Users
+                        </Link>
                     </li>
                 </ul>
             </div>
