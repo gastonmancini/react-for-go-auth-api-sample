@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { User } from '../models/user';
+import { Role } from '../models/role';
 
 function Header() {
 
@@ -14,7 +15,8 @@ function Header() {
               data.id,
               data.firstName,
               data.lastName,
-              data.email
+              data.email,
+              new Role(data.Role.Id, data.Role.name) 
             ));
         })();
     }, []);
