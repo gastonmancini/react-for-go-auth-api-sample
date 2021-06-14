@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Wrapper from '../../components/Wrapper';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Paginator from '../../components/Paginator';
 
 function Users() {
     
@@ -18,18 +19,6 @@ function Users() {
             }
         )()
     }, [page]);
-
-    function previous() {
-        if (page > 1) {
-            setPage(page - 1);
-        }
-    }
-
-    function next() {
-        if (page < lastPage) {
-            setPage(page + 1);
-        }
-    }
 
     async function remove(id) {
         if (window.confirm('Are you sure you want to delete this record?')) {
@@ -79,18 +68,7 @@ function Users() {
                     </tbody>
                 </table>
             </div>
-            <nav>
-                <ul className="pagination">
-                    <li className="page-item">
-                        <a href="#" className="page-link"
-                            onClick={previous}>Previous</a>
-                    </li>
-                    <li className="page-item">
-                        <a href="#" className="page-link"
-                            onClick={next}>Next</a>
-                    </li>
-                </ul>
-            </nav>
+            <Paginator page={page} lastPage={lastPage} pageChanged={setPage} />
         </Wrapper>
     );
 }
