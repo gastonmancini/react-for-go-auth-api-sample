@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Wrapper from '../components/Wrapper';
 import axios from 'axios';
+import { User } from '../models/user';
+import { connect } from 'react-redux';
+import { setUser } from '../redux/actions/setUserAction';
 
-function Profile() {
+function Profile(props) {
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -13,24 +16,28 @@ function Profile() {
     useEffect(() => {
         (
             async () => {
-                const { data } = await axios.get(`me`);
-                setFirstName(data.firstName);
-                setLastName(data.lastName);
-                setEmail(data.email);
-
+                setFirstName(props.user.firstName);
+                setLastName(props.user.lastName);
+                setEmail(props.user.email);
             }
         )()
-    }, []);
+    }, [props.user]); // Call it everytime the user changes
 
     async function submitAccountInformation(event) {
         event.preventDefault();
-        await axios.put("me", {
+        const { data } = await axios.put("me", {
             firstName: firstName,
             lastName: lastName,
             email: email,
             roleId: 1 // TODO: Add DropDownlist to select a role
         });
-
+        props.setUser(new User(
+            data.id,
+            data.firstName,
+            data.lastName,
+            data.email,
+            data.role
+        )); // Dispatch the chage event
     }
 
     async function submitPasswordChange(event) {
@@ -86,4 +93,16 @@ function Profile() {
     );
 }
 
-export default Profile;
+function mapStateToProps(state) {
+    return {
+        user: state.user
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        setUser: (user) => dispatch(setUser(user))
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

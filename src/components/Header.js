@@ -1,25 +1,12 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { User } from '../models/user';
 import { Role } from '../models/role';
+import { connect } from 'react-redux';
 
-function Header() {
-
-    const [user, setUser] = useState(new User());
-
-    useEffect(() => {
-        (async () => {
-            const { data } = await axios.get('me');
-            setUser(new User(
-              data.id,
-              data.firstName,
-              data.lastName,
-              data.email,
-              new Role(data.Role.Id, data.Role.name) 
-            ));
-        })();
-    }, []);
+// Get the user from the props using redux
+function Header({user}) {
 
     async function Logout() {
       await axios.post('logout', {});
@@ -41,4 +28,10 @@ function Header() {
     );
 }
 
-export default Header;
+function mapStateToProps(state) {
+  return {
+      user: state.user
+  };
+}
+
+export default connect(mapStateToProps)(Header);
