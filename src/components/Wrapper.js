@@ -21,7 +21,8 @@ function Wrapper(props) {
                     data.firstName,
                     data.lastName,
                     data.email,
-                    data.role
+                    data.role,
+                    data.image
                 ));
             } catch (e) {
                 setRedirect(true);

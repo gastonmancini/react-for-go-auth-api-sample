@@ -1,8 +1,6 @@
 import axios from 'axios';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { User } from '../models/user';
-import { Role } from '../models/role';
 import { connect } from 'react-redux';
 
 // Get the user from the props using redux
