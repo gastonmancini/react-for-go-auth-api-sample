@@ -4,6 +4,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import Profile from './pages/Profile';
 import Users from './pages/Users/Users';
 import UsersCreate from './pages/Users/UsersCreate';
 import UsersEdit from './pages/Users/UsersEdit';
@@ -17,6 +18,7 @@ function App() {
         <Route path={'/'} exact component={Dashboard} />
         <Route path={'/register'} component={Register} />
         <Route path={'/login'} component={Login} />
+        <Route path={'/profile'} component={Profile} />
         <Route path={'/users'} exact component={Users} />
         <Route path={'/users/create'} component={UsersCreate} />
         <Route path={'/users/:id/edit'} component={UsersEdit} />
