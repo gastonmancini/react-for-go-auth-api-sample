@@ -1,3 +1,53 @@
+# react-for-go-auth-api-sample
+
+This is just an example of how to implement a simple app in React. The backend used is a golang app also created by me called go-auth-api-sample.
+
+## 💡 Motivation
+
+The solution is pretty naive and was developed only for trying out the new [react](https://reactjs.org/) version.
+
+## 👀 Overview
+
+In short, the app allows you to register new users, login users, manage users, user roles, permissions, user profile, change passwords ...
+
+## 🧬 Development
+
+The application is written purely in react and javascript
+
+### Layout
+
+```tree
+├── components
+│   ├── Header.js
+│   ├── Nav.js
+│   ├── Paginator.js
+│   └── Wrapper.js
+├── models
+│   ├── permission.js
+│   ├── role.js
+│   └── user.js
+├── pages
+│   ├── Roles
+│   ├── Users
+│   ├── Dashboard.js
+│   ├── Login.js
+│   ├── Profile.js
+│   └── Register.js
+├── redux
+│   ├── actions
+│   ├── reducers
+│   └── configureStrore.js
+├── App.css
+├── App.js
+├── Register.css
+├── index.css
+└── index.js
+```
+
+## ⚠️ Warning
+
+The app was developed for educational purposes only. Do not use it in prod :)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
